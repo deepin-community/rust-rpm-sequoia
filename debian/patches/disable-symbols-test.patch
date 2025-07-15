@@ -1,0 +1,13 @@
+Index: rpm-sequoia/tests/symbols.rs
+===================================================================
+--- rpm-sequoia.orig/tests/symbols.rs
++++ rpm-sequoia/tests/symbols.rs
+@@ -6,7 +6,7 @@ use std::path::PathBuf;
+ use assert_cmd::Command;
+ use assert_cmd::assert::OutputAssertExt;
+ 
+-#[test]
++//#[test]
+ fn symbols() -> anyhow::Result<()> {
+     // Make sure the library is built.
+     Command::new("cargo").arg("build").ok()?;

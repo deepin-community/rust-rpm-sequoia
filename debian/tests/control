@@ -1,0 +1,34 @@
+Test-Command: /usr/share/cargo/bin/cargo-auto-test rpm-sequoia 1.8.0 --all-targets --all-features
+Features: test-name=rust-rpm-sequoia:@
+Depends: dh-cargo (>= 31), rustc (>= 1.79), librust-assert-cmd-2+default-dev, @
+Restrictions: allow-stderr, skip-not-installable, flaky
+
+Test-Command: /usr/share/cargo/bin/cargo-auto-test rpm-sequoia 1.8.0 --all-targets --no-default-features --features crypto-botan
+Features: test-name=librust-rpm-sequoia-dev:crypto-botan
+Depends: dh-cargo (>= 31), rustc (>= 1.79), librust-assert-cmd-2+default-dev, @
+Restrictions: allow-stderr, skip-not-installable, flaky
+
+Test-Command: /usr/share/cargo/bin/cargo-auto-test rpm-sequoia 1.8.0 --all-targets --no-default-features --features crypto-botan2
+Features: test-name=librust-rpm-sequoia-dev:crypto-botan2
+Depends: dh-cargo (>= 31), rustc (>= 1.79), librust-assert-cmd-2+default-dev, @
+Restrictions: allow-stderr, skip-not-installable, flaky
+
+Test-Command: /usr/share/cargo/bin/cargo-auto-test rpm-sequoia 1.8.0 --all-targets --no-default-features --features crypto-nettle
+Features: test-name=librust-rpm-sequoia-dev:crypto-nettle
+Depends: dh-cargo (>= 31), rustc (>= 1.79), librust-assert-cmd-2+default-dev, @
+Restrictions: allow-stderr, skip-not-installable, flaky
+
+Test-Command: /usr/share/cargo/bin/cargo-auto-test rpm-sequoia 1.8.0 --all-targets --no-default-features --features crypto-openssl
+Features: test-name=librust-rpm-sequoia-dev:crypto-openssl
+Depends: dh-cargo (>= 31), rustc (>= 1.79), librust-assert-cmd-2+default-dev, @
+Restrictions: allow-stderr, skip-not-installable, flaky
+
+Test-Command: /usr/share/cargo/bin/cargo-auto-test rpm-sequoia 1.8.0 --all-targets
+Features: test-name=librust-rpm-sequoia-dev:default
+Depends: dh-cargo (>= 31), rustc (>= 1.79), librust-assert-cmd-2+default-dev, @
+Restrictions: allow-stderr, skip-not-installable, flaky
+
+Test-Command: /usr/share/cargo/bin/cargo-auto-test rpm-sequoia 1.8.0 --all-targets --no-default-features
+Features: test-name=librust-rpm-sequoia-dev:
+Depends: dh-cargo (>= 31), rustc (>= 1.79), librust-assert-cmd-2+default-dev, @
+Restrictions: allow-stderr, skip-not-installable, flaky

@@ -1,15 +1,51 @@
-Source: template-repository
-Section: unknown
+Source: rust-rpm-sequoia
+Section: rust
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Build-Depends: debhelper-compat (= 13),
+ dh-sequence-cargo
+Build-Depends-Arch: cargo:native,
+ rustc:native (>= 1.79),
+ libstd-rust-dev,
+ librust-anyhow-1+default-dev,
+ librust-cdylib-link-lines-0.1+default-dev (>= 0.1.4-~~),
+ librust-chrono-0.4+std-dev,
+ librust-lazy-static-1+default-dev,
+ librust-libc-0.2+default-dev,
+ librust-sequoia-openpgp-2+crypto-nettle-dev,
+ librust-sequoia-openpgp-2-dev,
+ librust-sequoia-policy-config-0.8+default-dev,
+ librust-thiserror-1+default-dev
+Maintainer: Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>
+Uploaders:
+ Alexander Kjäll <alexander.kjall@gmail.com>,
+ Holger Levsen <holger@debian.org>
+Standards-Version: 4.7.0
+Vcs-Git: https://salsa.debian.org/rust-team/debcargo-conf.git [src/rpm-sequoia]
+Vcs-Browser: https://salsa.debian.org/rust-team/debcargo-conf/tree/master/src/rpm-sequoia
+Homepage: https://sequoia-pgp.org/
+X-Cargo-Crate: rpm-sequoia
+Rules-Requires-Root: no
 
-Package: template-repository
+Package: librpm-sequoia-1
+Section: libs
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Multi-Arch: same
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends}
+Description: Provides an implementation of the
+ rpm's pgp interface using Sequoia.
+
+Package: librpm-sequoia-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends:
+ ${misc:Depends},
+ librpm-sequoia-1 (= ${binary:Version}),
+Replaces:
+ librpm-sequoia-1 (<< 1.7.0-3),
+Breaks:
+ librpm-sequoia-1 (<< 1.7.0-3),
+Description: Provides an implementation of the
+ rpm's pgp interface using Sequoia.
