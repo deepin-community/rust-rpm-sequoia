@@ -1,0 +1,17 @@
+#!/bin/bash
+set -e
+
+# Author: Daniel Kahn Gillmor <dkg@fifthhorseman.net>
+
+# Ensure that the library has a name that matches the SONAME
+
+# Pass the crate version as the first argument of this script
+UPSTREAM_VERSION=$1
+SONAME=${UPSTREAM_VERSION%%.*}
+
+find target -maxdepth 3 -name librpm_sequoia.so -exec ln -f \{\} \{\}."$SONAME" \;
+
+# Author: Holger Levsen <holger@debian.org>
+# this is obviously a bad hack and should be done differently...
+find target -maxdepth 3 -name rpm-sequoia.pc -exec sed -i 's#^prefix=/usr/local#prefix=/usr#' {} \;
+find target -maxdepth 3 -name rpm-sequoia.pc -exec sed -i "s#^libdir=.*#libdir=\${prefix}/lib/${DEB_HOST_MULTIARCH}#" {} \;

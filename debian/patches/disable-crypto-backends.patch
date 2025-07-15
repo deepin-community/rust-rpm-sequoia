@@ -1,0 +1,17 @@
+Index: rpm-sequoia/Cargo.toml
+===================================================================
+--- rpm-sequoia.orig/Cargo.toml
++++ rpm-sequoia/Cargo.toml
+@@ -43,10 +43,10 @@ status = "actively-developed"
+ [features]
+ crypto-botan = ["sequoia-openpgp/crypto-botan"]
+ crypto-botan2 = ["sequoia-openpgp/crypto-botan2"]
+-crypto-cng = ["sequoia-openpgp/crypto-cng"]
++#crypto-cng = ["sequoia-openpgp/crypto-cng"]
+ crypto-nettle = ["sequoia-openpgp/crypto-nettle"]
+ crypto-openssl = ["sequoia-openpgp/crypto-openssl"]
+-crypto-rust = ["sequoia-openpgp/crypto-rust"]
++#crypto-rust = ["sequoia-openpgp/crypto-rust"]
+ default = ["crypto-nettle"]
+ 
+ [lib]
